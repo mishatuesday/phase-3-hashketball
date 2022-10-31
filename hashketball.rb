@@ -1,3 +1,5 @@
+require 'pry'
+
 # Write your code below game_hash
 def game_hash
   {
@@ -126,4 +128,60 @@ def game_hash
   }
 end
 
-# Write code here
+def all_players
+  game_hash[:home][:players] + game_hash[:away][:players]
+end
+
+def num_points_scored(name)
+  the_player = all_players.select {|player| player[:player_name] == name}
+  the_player[0][:points]
+end
+
+puts num_points_scored("Jeff Adrien")
+
+def shoe_size(name)
+  the_player = all_players.select {|player| player[:player_name] == name}
+  the_player[0][:shoe]
+end
+
+def team_colors(team)
+  # binding.pry
+  if game_hash[:home][:team_name] == team
+    return game_hash[:home][:colors]
+    # return "hit on home"
+  elsif game_hash[:away][:team_name] == team
+    return game_hash[:away][:colors]
+    # return "hit on away"
+  else return ["team not found"]
+  end
+end
+
+puts team_colors("Charlotte Hornets")
+
+def team_names
+  [game_hash[:home][:team_name], game_hash[:away][:team_name]]
+end
+
+puts team_names
+
+def player_numbers(team)
+  if game_hash[:home][:team_name] == team
+    game_hash[:home][:players].map {|player| player[:number]}
+  elsif game_hash[:away][:team_name] == team
+    game_hash[:away][:players].map {|player| player[:number]}
+  else return ["team not found"]
+  end
+end
+
+puts player_numbers("Brooklyn Nets")
+
+def player_stats (name)
+  the_player = all_players.select {|player| player[:player_name] == name}
+  the_player[0]
+end
+
+def big_shoe_rebounds
+  all_players.max_by {|player| player[:shoe]}[:rebounds]
+end
+
+puts big_shoe_rebounds
