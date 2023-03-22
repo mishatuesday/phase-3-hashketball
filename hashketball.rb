@@ -137,7 +137,7 @@ def num_points_scored(name)
   the_player[0][:points]
 end
 
-puts num_points_scored("Jeff Adrien")
+puts num_points_scored("Ben Gordon")
 
 def shoe_size(name)
   the_player = all_players.select {|player| player[:player_name] == name}
@@ -156,13 +156,13 @@ def team_colors(team)
   end
 end
 
-puts team_colors("Charlotte Hornets")
+#puts team_colors("Brooklyn Nets")
 
 def team_names
   [game_hash[:home][:team_name], game_hash[:away][:team_name]]
 end
 
-puts team_names
+#puts team_names
 
 def player_numbers(team)
   if game_hash[:home][:team_name] == team
@@ -173,7 +173,7 @@ def player_numbers(team)
   end
 end
 
-puts player_numbers("Brooklyn Nets")
+#puts player_numbers("Charlotte Hornets")
 
 def player_stats (name)
   the_player = all_players.select {|player| player[:player_name] == name}
@@ -184,4 +184,4 @@ def big_shoe_rebounds
   all_players.max_by {|player| player[:shoe]}[:rebounds]
 end
 
-puts big_shoe_rebounds
+#puts big_shoe_rebounds
